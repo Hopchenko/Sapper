@@ -1,0 +1,22 @@
+{
+  "name": "Sapper",
+  "version": "0.0.0",
+  "description": "Sapper game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gopchenkoalexey/Sapper.git"
+  },
+  "author": "Gopchenko Alexey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gopchenkoalexey/Sapper/issues"
+  },
+  "homepage": "https://github.com/gopchenkoalexey/Sapper",
+  "dependencies": {
+    "express": "~4.14.0"
+  }
+}

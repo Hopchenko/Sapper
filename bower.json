@@ -1,0 +1,21 @@
+{
+  "name": "Sapper",
+  "homepage": "https://github.com/gopchenkoalexey/Sapper",
+  "authors": [
+    "Alexey Hopchenko <gopchenko.alexey@gmail.com>"
+  ],
+  "description": "Sapper game",
+  "main": "server.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.7",
+    "bootstrap": "^3.3.6"
+  }
+}
