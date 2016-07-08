@@ -1,7 +1,8 @@
+/*page*/
 html {
-	position: relative;
-	min-height: 100%;
-  min-width: 450px;
+  position: relative;
+  min-height: 100%;
+  min-width: 1000px;
 }
 
 .page-header {
@@ -13,7 +14,167 @@ html {
   font-size: 5em;
 }
 
-.game-box {
+.shadow {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/*Place for action*/
+#game-box {
   position: absolute !important;
-  height: 75%;
+  height: 80%;'
+}
+/*Main menu panel adn authorization and score*/
+#main-menu,
+#score{
+  position: absolute;
+  top: 25%;
+}
+
+.graphite-flat-button {
+  position: relative;
+  vertical-align: top;
+  width: 100%;
+  text-transform: uppercase;
+  padding: 0;
+  font-size: 5em;
+  font-family: 'VT323';
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  background: #454545;
+  border: 0;
+  border-bottom: 2px solid #2f2e2e;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 -2px #2f2e2e;
+  box-shadow: inset 0 -2px #2f2e2e;
+}
+
+.graphite-flat-button:active {
+  top: 1px;
+  outline: none !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+#btn-play {
+  margin-bottom: 24px;
+}
+/*Panel with game-info*/
+.panel {
+  font-size: 2em;
+  text-transform: uppercase;
+  font-family: 'VT323';
+}
+
+.panel .navbar-brand {
+  font-size: 2em;
+}
+
+#end-game {
+  margin-top: 4px;
+}
+
+#score-info {
+  color: #ebbe00;
+}
+
+#bomb-info {
+  color: black;
+}
+
+#live-info {
+  color: red;
+}
+
+#time-info{
+  color: #1b5283;
+}
+
+/*BATTLEFIELD TABLE*/
+#battlefield {
+  border: 2px solid #333;
+  border-collapse: separate;
+  border-radius: 6px;
+  margin: 0 auto;
+}
+
+#battlefield td {
+  padding:  0 4px;
+  font-size: 1em;
+}
+
+/*Autorization window*/
+
+#authorization {
+  position: absolute;
+  top: 10%;
+  text-transform: uppercase;
+}
+
+#authorization input,
+#authorization button {
+  font-size: 2.5em;
+}
+
+#authorization .radio {
+  font-family: 'VT323';
+  font-size: 2.5em;
+}
+
+#authorization input[type=radio] {
+  margin-top: 18px;
+}
+
+#player-name {
+  position: relative;
+  vertical-align: top;
+  width: 100%;
+  padding: 0;
+  font-size: 5em;
+  font-family: 'VT323';
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  background: #777;
+  border: 2px solid #2f2e2e;
+}
+
+
+/*Score window*/
+
+#score {
+  font-family: 'VT323';
+  text-transform: uppercase
+}
+
+#score h1 {
+  margin-top: 0;
+}
+#result {
+
+  list-style-type: none;
+  font-size: 2em;
+}
+
+/*Rules*/
+
+
+#rules {
+  font-family: 'VT323';
+  position: absolute;
+  top: 5%;
+}
+
+#rules h1 {
+  font-size: 5em;
+  margin-top: 0px;
+}
+
+#rules button {
+  width: 50%;
+  margin: 20px auto 0 auto;
+  font-size: 2.5em;
+}
+
+.list-of-rules {
+  font-size: 1.5em;
 }
