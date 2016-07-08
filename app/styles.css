@@ -1,4 +1,5 @@
 /*page*/
+
 html {
   position: relative;
   min-height: 100%;
@@ -15,16 +16,23 @@ html {
 }
 
 .shadow {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+
 /*Place for action*/
+
 #game-box {
   position: absolute !important;
-  height: 80%;'
+  height: 80%;
+  '
+
 }
-/*Main menu panel adn authorization and score*/
-#main-menu,
-#score{
+
+
+/*Main menu panel*/
+
+#main-menu {
   position: absolute;
   top: 25%;
 }
@@ -58,7 +66,10 @@ html {
 #btn-play {
   margin-bottom: 24px;
 }
+
+
 /*Panel with game-info*/
+
 .panel {
   font-size: 2em;
   text-transform: uppercase;
@@ -85,11 +96,13 @@ html {
   color: red;
 }
 
-#time-info{
+#time-info {
   color: #1b5283;
 }
 
+
 /*BATTLEFIELD TABLE*/
+
 #battlefield {
   border: 2px solid #333;
   border-collapse: separate;
@@ -98,9 +111,10 @@ html {
 }
 
 #battlefield td {
-  padding:  0 4px;
+  padding: 0 4px;
   font-size: 1em;
 }
+
 
 /*Autorization window*/
 
@@ -142,6 +156,7 @@ html {
 /*Score window*/
 
 #score {
+
   font-family: 'VT323';
   text-transform: uppercase
 }
@@ -149,14 +164,25 @@ html {
 #score h1 {
   margin-top: 0;
 }
-#result {
 
+#score button {
+  font-size: 2.5em;
+  width: 45%;
+  margin: 0 auto;
+}
+
+#score #play-again {
+  float: left;
+  margin-right: 10%;
+}
+
+#result {
   list-style-type: none;
   font-size: 2em;
 }
 
-/*Rules*/
 
+/*Rules*/
 
 #rules {
   font-family: 'VT323';
