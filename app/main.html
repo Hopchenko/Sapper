@@ -21,28 +21,29 @@
     </header>
 
     <!--SCENE-->
-    <div class="container-fluid" ng-app='app'>
+    <div class="container-fluid">
         <div class="row">
-            <div class=" well col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1" id='game-box' ng-view>
+            <div class=" well col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1" id='game-box'>
 
             </div>
         </div>
     </div>
-
+    <script>
+        var app = { };
+    </script>
     <!--Libraries and Frameworks-->
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/bower_components/angular/angular.min.js"></script>
-    <script src="/bower_components/angular-route/angular-route.min.js"></script>
     <!--Script-->
-    <script src="/app/js/my-route.js"></script>
+
     <script src="/app/js/sapper.js"></script>
     <script src="/app/js/battlefield.js"></script>
     <script src="/app/js/mediator.js"></script>
     <script src="/app/js/player.js"></script>
     <script src="/app/js/score-board.js"></script>
     <script src="/app/js/timer.js"></script>
-    <script src="/app/js/watcher.js"></script>
+    <script src="/app/js/app.js"></script>
+    <script src="/app/js/route-config.js"></script>
 </body>
 
 </html>
