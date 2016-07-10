@@ -1,16 +1,16 @@
 'use strict';
-
+//for evading syntax errors registrate there events
 app.eventNames = (function(){
     return {
+        //game
         gameStartEvent: 'gameStartEvent',
         gameEndEvent: 'gameEndEvent',
         gameWinEvent: 'gameWinEvent',
-        
-        //
+        //cell
         cellClickedEvent: 'cellClickedEvent',
-        //
-        bombExplodedEvent: 'bombExplodedEvent',
         showSafeCellsEvent: 'showSafeCellsEvent',
+        //bomb
+        bombExplodedEvent: 'bombExplodedEvent',
         //time
         timeIsOverEvent: 'timeIsOverEvent',
         timeTillTheEndEvent: 'timeTillTheEndEvent',

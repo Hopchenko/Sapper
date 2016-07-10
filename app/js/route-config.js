@@ -55,6 +55,7 @@ app.routeConfig = (function () {
                 error: that.showErrors
             })
         },
+        
         showErrors: function (error) {
             var message = $('<h1>Connection lost,try again</h1>'),
                 btn = $('<button>reload</button>').click(function () {
@@ -63,6 +64,7 @@ app.routeConfig = (function () {
             gameBox.empty();
             gameBox.append(message).append(btn);
         },
+        
         loadGameFieldTemplate: function () {
             var that = this,
                 url = '/app/templates/';
@@ -71,7 +73,7 @@ app.routeConfig = (function () {
                 playerName: $('#player-name').val()
             }
 
-            //В зависимости от ввода взять нужный темплейт
+            //depends on player level set appropriate template
             if ($('#newbie').prop('checked')) {
                 url += 'small-field.html';
                 playerEventArgs.level = 'newbie';
@@ -89,12 +91,13 @@ app.routeConfig = (function () {
                 success: function (data) {
                     gameBox.empty();
                     gameBox.append(data);
-                    //Запустить событие начала игры
+                    //broadcats game start event
                     mediator.publish(app.eventNames.gameStartEvent, playerEventArgs);
                 },
                 error: that.showErrors
             });
         },
+        
         loadScoreBoardTemplate: function (args) {
             var that = app.routeConfig;
             setTimeout(function () {
@@ -108,7 +111,7 @@ app.routeConfig = (function () {
                             that.loadAuthorizationTemplate();
                         });
                         $('#winner-name').append(args.name);
-                        $('#score-info').append(args.score);
+                        $('#score-info').append(': ' + args.score);
                     },
                     error: that.showErrors
                 });

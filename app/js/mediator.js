@@ -18,8 +18,6 @@ var mediator = (function () {
 
         if (!channels[channel]) return false;
         for (var i = 0, l = channels[channel].length; i < l; i++) {
-//            var subscription = channels[channel][i];
-//            subscription.callback.apply(subscription.context, eventArgs);
             channels[channel][i].callback(eventArgs);
         }
         return this;

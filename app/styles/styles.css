@@ -6,8 +6,8 @@ html {
     min-width: 1000px;
 }
 
-.page-header {
-    margin-top: 0 !important;
+body .page-header {
+    margin-top: 0;
     font-family: 'VT323';
 }
 
@@ -23,10 +23,8 @@ html {
 /*Place for action*/
 
 #game-box {
-    position: absolute !important;
+    position: absolute;
     height: 80%;
-    '
-
 }
 
 
@@ -56,9 +54,9 @@ html {
     box-shadow: inset 0 -2px #2f2e2e;
 }
 
-.graphite-flat-button:active {
+body .graphite-flat-button:active {
     top: 1px;
-    outline: none !important;
+    outline: none;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
@@ -171,8 +169,7 @@ html {
 }
 
 #score #play-again {
-    float: left;
-    margin-right: 10%;
+    
 }
 
 #result {

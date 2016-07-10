@@ -3,12 +3,12 @@
 app.sapper = (function () {
     //CHeck cell
     var init = function (args) {
-        //1. заполнить поле
+        //1.Fill field
         app.battleField.fill(app.player.getLevel())
-            //2.Запустить таймер
+        //2.Set timer
         setTimer(app.player.getLevel());
     };
-
+    //Choose level of game and set appropriate time
     var setTimer = function (level) {
         if (level === 'newbie') {
             app.timer.setTime(600)
@@ -20,13 +20,11 @@ app.sapper = (function () {
 
         app.timer.start();
     };
-    //Обрабатывает нажатие на ячейку
+    //Process click on cell by rows and columns
     var onCellClicked = function (args) {
 
-
-
         if (args.mouseButtonType == 0) {
-            //Рекурсивная проверка клеток
+
             var cellsToChange = handleCell(args.row, args.column);
 
             for (var i = 0; i < cellsToChange.length; i++) {
@@ -67,9 +65,9 @@ app.sapper = (function () {
             row: row,
             column: column
         }];
-
+        //Process empty cells by recursion !realize
         var reqFunc = function () {
-
+        
         }
         reqFunc();
         return cellsToChange;

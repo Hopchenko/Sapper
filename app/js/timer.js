@@ -1,7 +1,6 @@
 'use strict';
 
 app.timer = (function () {
-    
     var timeIsOver = true,
         time = 0;
     return {
@@ -18,6 +17,7 @@ app.timer = (function () {
             var that = this;
             var intervalId = setInterval(function () {
                 if (timeIsOver || time === 0) {
+                    //broadcast event for end game
                     mediator.publish(app.eventNames.timeIsOverEvent, null);
                     clearInterval(intervalId);
                     that.reset();
