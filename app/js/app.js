@@ -29,6 +29,22 @@ $(function(){
     mediator.subscribe(app.eventNames.battleFieldCreatedEvent,
                        app.controllers.battleFieldCtrl.initializeField);
     
+    //end game
+    
+    mediator.subscribe(app.eventNames.playerHitPointsOverEvent,
+                       app.gameEndListener.onPlayerDead);
+    mediator.subscribe(app.eventNames.timeIsOverEvent,
+                       app.gameEndListener.onTimeIsOver);
+    mediator.subscribe(app.eventNames.gameWinEvent,
+                       app.gameEndListener.onWin);
+    mediator.subscribe(app.eventNames.gameWinEvent,
+                       app.controllers.battleFieldCtrl.showAllBombs);
+    
+    //
+    mediator.subscribe(app.eventNames.gameEndEvent,
+                       app.routeConfig.loadScoreBoardTemplate);
+
+    
     
     
     

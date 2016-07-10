@@ -40,6 +40,12 @@ app.player = (function () {
         decreaseHitPoints: function () {
             playerHitPoints -= 1;
             mediator.publish(app.eventNames.playerCurrentHitPointsEvent, {currentHitPoints: playerHitPoints});
+            if (playerHitPoints == 0) {
+                mediator.publish(app.eventNames.playerHitPointsOverEvent, {
+                    name: playerName,
+                    score: playerPoints
+                })
+            }
         },
         getPlayerHitPoints: function () {
             return playerLives;

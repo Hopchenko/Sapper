@@ -95,8 +95,8 @@ app.routeConfig = (function () {
                 error: that.showErrors
             });
         },
-        loadScoreBoardTemplate: function() {
-            var that = this;
+        loadScoreBoardTemplate: function(args) {
+            var that = app.routeConfig;
             $.ajax({
                 type: 'GET',
                 url: '/app/templates/score-board.html',
@@ -106,6 +106,8 @@ app.routeConfig = (function () {
                     $('#play-again').click(function (event) {
                         that.loadAuthorizationTemplate();
                     });
+                    $('#winner-name').append(args.name);
+                    $('#score-info').append(args.score);
                 },
                 error: that.showErrors
             })

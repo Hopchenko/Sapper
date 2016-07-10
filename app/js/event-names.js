@@ -4,6 +4,7 @@ app.eventNames = (function(){
     return {
         gameStartEvent: 'gameStartEvent',
         gameEndEvent: 'gameEndEvent',
+        gameWinEvent: 'gameWinEvent',
         
         //
         cellClickedEvent: 'cellClickedEvent',

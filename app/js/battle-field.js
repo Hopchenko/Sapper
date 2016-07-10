@@ -131,12 +131,26 @@ app.battleField = (function () {
             this.field[row][column].opened = false;
             this.field[row][column].marked = true;
         },
-        unmark: function (row, column){
+        unmark: function (row, column) {
             this.field[row][column].opened = false;
             this.field[row][column].marked = false;
         },
         getCell: function (row, column) {
             return this.field[row][column];
+        },
+        checkOnWin: function () {
+            for (var row = 0; row < this.field.length; row++) {
+                for (var column = 0; column < this.field[0].length; column++) {
+                    var cell = this.field[row][column];
+                    if (cell.value != elements.bomb && !cell.opened)
+                        return false;
+                }
+            }
+            mediator.publish(app.eventNames.gameWinEvent, null);
+            return true;
+        },
+        isBombOn: function (row, column){
+            return this.field[row][column].value == elements.bomb;
         }
     }
 

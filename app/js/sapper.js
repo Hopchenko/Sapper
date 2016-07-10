@@ -22,19 +22,34 @@ app.sapper = (function () {
     };
     //Обрабатывает нажатие на ячейку
     var onCellClicked = function (args) {
-        var options = {
-            row: args.row,
-            column: args.column,
-            element: app.battleField.getCell(args.row, args.column).value,
-        };
-        
-        
-        if (args.mouseButtonType == 1) {
-            options.opened = true;
-            app.battleField.open(args.row, args.column);
-            app.player.addPoints(10 * options.element + 10);
-        } else if (args.mouseButtonType == 3) {
-            options.opened = false;
+
+
+
+        if (args.mouseButtonType == 0) {
+            //Рекурсивная проверка клеток
+            var cellsToChange = handleCell(args.row, args.column);
+
+            for (var i = 0; i < cellsToChange.length; i++) {
+                var options = {
+                    opened: true,
+                    row: cellsToChange[i].row,
+                    column: cellsToChange[i].column,
+                    element: app.battleField.getCell(cellsToChange[i].row, cellsToChange[i].column).value
+                };
+                
+                app.battleField.open(cellsToChange[i].row, cellsToChange[i].column);
+                app.player.addPoints(10 * options.element + 10);
+                app.controllers.battleFieldCtrl.changeCell(options);
+            }
+
+        } else if (args.mouseButtonType == 2) {
+            var options = {
+                row: args.row,
+                column: args.column,
+                element: app.battleField.getCell(args.row, args.column).value,
+                opened: false
+            };
+
             if (app.battleField.getCell(args.row, args.column).marked) {
                 app.battleField.unmark(args.row, args.column);
                 options.marked = false;
@@ -44,6 +59,20 @@ app.sapper = (function () {
             };
         }
         app.controllers.battleFieldCtrl.changeCell(options);
+
+    };
+
+    var handleCell = function (row, column) {
+        var cellsToChange = [{
+            row: row,
+            column: column
+        }];
+
+        var reqFunc = function () {
+
+        }
+        reqFunc();
+        return cellsToChange;
     };
 
     return {
