@@ -14,12 +14,13 @@ var mediator = (function () {
         return this;
     };
     // Publish/broadcast an event to the rest of the application
-    var publish = function (channel) {
+    var publish = function (channel, eventArgs) {
+
         if (!channels[channel]) return false;
-        var args = Array.prototype.slice.call(arguments, 1);
         for (var i = 0, l = channels[channel].length; i < l; i++) {
-            var subscription = channels[channel][i];
-            subscription.callback.apply(subscription.context, args);
+//            var subscription = channels[channel][i];
+//            subscription.callback.apply(subscription.context, eventArgs);
+            channels[channel][i].callback(eventArgs);
         }
         return this;
     };

@@ -2,8 +2,8 @@
 
 var player = (function () {
     var playerName = 'player one',
-        playerPoint = 0,
-        playerLives = 3,
+        playerPoints = 0,
+        playerHitPoints = 3,
         playerLevel = 'newbie';
     return {
         setName: function (name) {

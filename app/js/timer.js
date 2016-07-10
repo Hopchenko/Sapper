@@ -1,46 +1,38 @@
 'use strict';
 
-var timerModule = (function () {
-    var endGame = false,
-        timeForGame = 0;
+app.timer = (function () {
+    
+    var timeIsOver = true,
+        time = 0;
     return {
-        setTime: function (level) {
-            if (level === 'newbie') {
-                timeForGame = 6;
-                setTimeout(function () {
-                    endGame = true;
-                }, timeForGame * 1000);
-            } else if (level === 'expierienced') {
-                timeForGame = 1200;
-                setTimeout(function () {
-                    endGame = true;
-                }, 1200 * 1000);
-            } else if (level === 'master') {
-                timeForGame = 1800;
-                setTimeout(function () {
-                    endGame = true;
-                }, 1800 * 1000);
+        //time measured in seconds
+        setTime: function (num) {
+            if (typeof num !== 'number') {
+                throw new TypeError();
             }
+            time = num;
+            timeIsOver = false;
+        },
+        start: function () {
+            if (time === 0) return;
+            var that = this;
+            setTimeout(function () {
+                mediator.publish(app.eventNames.timeIsOverEvent, null);
+                that.reset();
+            }, time * 1000);
             var intervalId = setInterval(function () {
-                timeForGame -= 1;
-                if (endGame) {
+                if (timeIsOver || time === 0) {
                     clearInterval(intervalId);
                 }
+                time -= 1;
+                mediator.publish(app.eventNames.timeTillTheEndEvent, {
+                    timeTillTheEnd: time
+                });
             }, 1000);
-
         },
-        resetTimer: function () {
-            endGame = false;
-            timeForGame = 0;
-        },
-        getEndGame: function () {
-            return endGame;
-        },
-        getTimeForGame: function () {
-            return timeForGame;
-        },
-        endGame: function () {
-            endGame = true;
+        reset: function () {
+            timeIsOver = true;
+            time = 0;
         }
     };
 })()
