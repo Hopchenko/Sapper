@@ -1,10 +1,28 @@
 'use strict';
 
-var player = (function () {
+app.player = (function () {
     var playerName = 'player one',
         playerPoints = 0,
         playerHitPoints = 3,
         playerLevel = 'newbie';
+    //функция доступна из-за замыкания и 
+    var setUpNewPlayer = function (args) {
+        playerName = args.playerName || 'player one';
+        playerLevel = args.level;
+        playerHitPoints = 3;
+        playerPoints = 0;
+        var eventArgs  = {
+            playerName: playerName,
+            currentPlayerScore: playerPoints,
+            currentHitPoints: playerHitPoints,
+            playerLevel: playerLevel
+        };
+        mediator.publish(app.eventNames.playerCreatedEvent, eventArgs)
+    };
+    
+    mediator.subscribe(app.eventNames.gameStartEvent, setUpNewPlayer);
+    
+
     return {
         setName: function (name) {
             playername = name;
@@ -12,16 +30,18 @@ var player = (function () {
         getName: function () {
             return playerName;
         },
-        setPoint: function (point) {
-            playerPoint = point;
+        addPoints: function (points) {
+            playerPoints += points;
+            mediator.publish(app.eventNames.playerCurrentScoreEvent, { currentPlayerScore: playerPoints });
         },
-        getPoint: function () {
-            return playerPoint;
+        getPoints: function () {
+            return playerPoints;
         },
-        decreaseLives: function () {
-            playerLives -= 1;
+        decreaseHitPoints: function () {
+            playerHitPoints -= 1;
+            mediator.publish(app.eventNames.playerCurrentHitPointsEvent, {currentHitPoints: playerHitPoints});
         },
-        getLives: function () {
+        getPlayerHitPoints: function () {
             return playerLives;
         },
         setLevel: function (level) {
@@ -29,12 +49,6 @@ var player = (function () {
         },
         getLevel: function () {
             return playerLevel;
-        },
-        resetPlayer: function () {
-            playerName = 'player one';
-            playerPoint = 0;
-            playerLives = 3;
-            playerLevel = 'newbie';
         }
     };
 })()

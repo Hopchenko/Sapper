@@ -13,6 +13,13 @@ app.eventNames = (function(){
         //time
         timeIsOverEvent: 'timeIsOverEvent',
         timeTillTheEndEvent: 'timeTillTheEndEvent',
+        //player
         playerHitPointsOverEvent: 'playerHitPointsOverEvent',
+        playerCurrentScoreEvent: 'playerCurrentScoreEvent',
+        playerCurrentHitPointsEvent: 'playerCurrentHitPointsEvent',
+        playerCreatedEvent: 'playerCreatedEvent',
+        
+        //battleField
+        battleFieldCreatedEvent: 'battleFieldCreatedEvent'
     }
 })();

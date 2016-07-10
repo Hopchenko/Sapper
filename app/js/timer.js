@@ -16,13 +16,12 @@ app.timer = (function () {
         start: function () {
             if (time === 0) return;
             var that = this;
-            setTimeout(function () {
-                mediator.publish(app.eventNames.timeIsOverEvent, null);
-                that.reset();
-            }, time * 1000);
             var intervalId = setInterval(function () {
                 if (timeIsOver || time === 0) {
+                    mediator.publish(app.eventNames.timeIsOverEvent, null);
                     clearInterval(intervalId);
+                    that.reset();
+                    return;
                 }
                 time -= 1;
                 mediator.publish(app.eventNames.timeTillTheEndEvent, {
