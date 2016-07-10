@@ -37,6 +37,11 @@ $(function(){
                        app.gameEndListener.onTimeIsOver);
     mediator.subscribe(app.eventNames.gameWinEvent,
                        app.gameEndListener.onWin);
+    //bombs
+    mediator.subscribe(app.eventNames.timeIsOverEvent,
+                       app.controllers.battleFieldCtrl.showAllBombs);
+    mediator.subscribe(app.eventNames.playerHitPointsOverEvent,
+                       app.controllers.battleFieldCtrl.showAllBombs);
     mediator.subscribe(app.eventNames.gameWinEvent,
                        app.controllers.battleFieldCtrl.showAllBombs);
     

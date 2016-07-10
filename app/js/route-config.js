@@ -95,22 +95,24 @@ app.routeConfig = (function () {
                 error: that.showErrors
             });
         },
-        loadScoreBoardTemplate: function(args) {
+        loadScoreBoardTemplate: function (args) {
             var that = app.routeConfig;
-            $.ajax({
-                type: 'GET',
-                url: '/app/templates/score-board.html',
-                success: function (data) {
-                    gameBox.empty();
-                    gameBox.append(data);
-                    $('#play-again').click(function (event) {
-                        that.loadAuthorizationTemplate();
-                    });
-                    $('#winner-name').append(args.name);
-                    $('#score-info').append(args.score);
-                },
-                error: that.showErrors
-            })
+            setTimeout(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: '/app/templates/score-board.html',
+                    success: function (data) {
+                        gameBox.empty();
+                        gameBox.append(data);
+                        $('#play-again').click(function (event) {
+                            that.loadAuthorizationTemplate();
+                        });
+                        $('#winner-name').append(args.name);
+                        $('#score-info').append(args.score);
+                    },
+                    error: that.showErrors
+                });
+            }, 2000)
         }
     };
 })();
