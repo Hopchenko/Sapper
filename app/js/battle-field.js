@@ -12,7 +12,7 @@ app.battleField = (function () {
             i = 0;
         for (i; i < height; i++) {
             emptyField.push(new Array(width));
-            for (var j = 0; j < emptyField[0].length; j++){
+            for (var j = 0; j < emptyField[0].length; j++) {
                 emptyField[i][j] = {
                     value: elements.emptyCell,
                     opened: false
@@ -60,9 +60,7 @@ app.battleField = (function () {
         for (var row = 0; row < arr.length; row++) {
             for (var column = 0; column < arr[0].length; column++) {
                 if (arr[row][column].value == elements.bomb) {
-                    
-                    console.log('bomb on: ' + row + ", " + column);
-                    
+
                     if (isValidCoordinates(row - 1, column - 1, arr)) {
                         arr[row - 1][column - 1].value++;
                     }
@@ -94,7 +92,7 @@ app.battleField = (function () {
 
     return {
         field: [],
-        fill: function (level) {       
+        fill: function (level) {
             var localSettings = {};
             if (level === 'newbie') {
                 localSettings.width = 9;
@@ -122,6 +120,24 @@ app.battleField = (function () {
         },
         getHeight: function () {
             return this.field.length;
+        },
+        open: function (row, column) {
+            this.field[row][column].opened = true;
+            if (this.field[row][column].value == elements.bomb) {
+                mediator.publish(app.eventNames.bombExplodedEvent, null);
+            }
+        },
+        mark: function (row, column) {
+            this.field[row][column].opened = false;
+            this.field[row][column].marked = true;
+        },
+        unmark: function (row, column){
+            this.field[row][column].opened = false;
+            this.field[row][column].marked = false;
+        },
+        getCell: function (row, column) {
+            return this.field[row][column];
         }
     }
+
 })();

@@ -15,12 +15,14 @@ $(function(){
     mediator.subscribe(app.eventNames.playerCreatedEvent,
                         app.controllers.statsPanelCtrl.initializePanel);
     
-    //
+    //player
     
     mediator.subscribe(app.eventNames.playerCreatedEvent,
                        app.sapper.init);
     mediator.subscribe(app.eventNames.cellClickedEvent,
                       app.sapper.onCellClicked);
+    mediator.subscribe(app.eventNames.bombExplodedEvent,
+                      app.player.decreaseHitPoints);
     
     
     //
