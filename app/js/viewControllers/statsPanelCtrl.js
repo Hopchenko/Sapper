@@ -18,7 +18,7 @@ app.controllers.statsPanelCtrl = (function () {
 
         var lbl = $('#panel-player-name');
         
-        //НЕ работает очищение
+        //dont work for default name !need to fix
         //lbl.empty();
         lbl.text(args.playerName);
         

@@ -1,7 +1,7 @@
 'use strict';
 
 app.battleField = (function () {
-
+    //marks of cells and mines on field
     var elements = {
         emptyCell: 0,
         bomb: -1
@@ -55,7 +55,7 @@ app.battleField = (function () {
         }
         return true;
     }
-
+    //Place numbers of bombs in cells near each bombs
     var placeNumbers = function (arr) {
         for (var row = 0; row < arr.length; row++) {
             for (var column = 0; column < arr[0].length; column++) {

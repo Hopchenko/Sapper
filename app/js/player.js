@@ -5,7 +5,7 @@ app.player = (function () {
         playerPoints = 0,
         playerHitPoints = 3,
         playerLevel = 'newbie';
-    //функция доступна из-за замыкания и 
+    //function avilable because of closure
     var setUpNewPlayer = function (args) {
         playerName = args.playerName || 'player one';
         playerLevel = args.level;

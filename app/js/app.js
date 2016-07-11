@@ -45,28 +45,10 @@ $(function(){
     mediator.subscribe(app.eventNames.gameWinEvent,
                        app.controllers.battleFieldCtrl.showAllBombs);
     
-    //
+    //load score board
     mediator.subscribe(app.eventNames.gameEndEvent,
                        app.routeConfig.loadScoreBoardTemplate);
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     //Load main menu
     app.routeConfig.loadMainMenu();
 });

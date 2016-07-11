@@ -1,6 +1,7 @@
 'use strict';
 
 app.controllers.battleFieldCtrl = (function () {
+    //initialize field with default picture on each cell
     var initializeField = function () {
         for (var row = 0; row < app.battleField.getHeight(); row++) {
             for (var column = 0; column <= app.battleField.getWidth(); column++) {
@@ -9,7 +10,7 @@ app.controllers.battleFieldCtrl = (function () {
             }
         }
     };
-
+    //change cell depending on the condition
     var changeCell = function (options) {
         var cell = $('#row' + options.row).children('#column' + options.column);
         if (options.opened) {
@@ -25,7 +26,7 @@ app.controllers.battleFieldCtrl = (function () {
                 .addClass('fa')
                 .addClass('fa-flag-checkered')
                 .attr('aria-hidden', 'true')
-                .attr('oncontextmenu','return false;')
+                .attr('oncontextmenu', 'return false;')
                 .mousedown(function (event) {
                     var cellRow = $(event.target).parent().parent().attr('id').replace('row', '');
                     var cellColumn = $(event.target).parent().attr('id').replace('column', '');
@@ -47,8 +48,8 @@ app.controllers.battleFieldCtrl = (function () {
         var pict = $('<i></i>')
             .addClass('fa')
             .addClass('fa-gift')
-            .attr('aria-hidden', 'true')        
-            .attr('oncontextmenu','return false;')        
+            .attr('aria-hidden', 'true')
+            .attr('oncontextmenu', 'return false;')
             .mousedown(function (event) {
                 event.preventDefault();
                 var cellRow = $(event.target).parent().parent().attr('id').replace('row', '');
@@ -62,14 +63,15 @@ app.controllers.battleFieldCtrl = (function () {
             });
         return pict;
     };
-    
-    var showAllBombs = function(){
+    //at the end of game show all bombs for player
+
+    var showAllBombs = function () {
         for (var row = 0; row < app.battleField.getHeight(); row++) {
-            for (var column = 0; column < app.battleField.getWidth(); column++) {                
-                if(app.battleField.isBombOn(row,column)){
+            for (var column = 0; column < app.battleField.getWidth(); column++) {
+                if (app.battleField.isBombOn(row, column)) {
                     var cell = $('#row' + row).children('#column' + column);
-                cell.html('<i class="fa fa-bomb" aria-hidden="true"></i>');
-                }              
+                    cell.html('<i class="fa fa-bomb" aria-hidden="true"></i>');
+                }
             }
         }
     }

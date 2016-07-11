@@ -1,5 +1,5 @@
 'use strict'
-
+//that module like a coach following the events at the end of the game
 app.gameEndListener = (function(){
     
     var fireGameEndEvent = function(args){

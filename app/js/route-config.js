@@ -1,4 +1,6 @@
 'use strict';
+
+//There set routes for our game 
 app.routeConfig = (function () {
     var gameBox = $('#game-box');
 

@@ -22,7 +22,7 @@ app.sapper = (function () {
     };
     //Process click on cell by rows and columns
     var onCellClicked = function (args) {
-
+        //left click check cell and change in view and model
         if (args.mouseButtonType == 0) {
 
             var cellsToChange = handleCell(args.row, args.column);
@@ -39,7 +39,7 @@ app.sapper = (function () {
                 app.player.addPoints(10 * options.element + 10);
                 app.controllers.battleFieldCtrl.changeCell(options);
             }
-
+        //right click put flag 
         } else if (args.mouseButtonType == 2) {
             var options = {
                 row: args.row,
@@ -65,7 +65,7 @@ app.sapper = (function () {
             row: row,
             column: column
         }];
-        //Process empty cells by recursion !realize
+        //Process empty cells by recursion ! need to realize
         var reqFunc = function () {
         
         }
