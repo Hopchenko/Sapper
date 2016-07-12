@@ -1,2 +1,2 @@
 # Sapper
-Practical task for JS intership in Sigma company.
+Practical task for JS intership in Sigma Software company.
