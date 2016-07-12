@@ -22,23 +22,64 @@ app.sapper = (function () {
     };
     //Process click on cell by rows and columns
     var onCellClicked = function (args) {
+
         //left click check cell and change in view and model
         if (args.mouseButtonType == 0) {
 
-            var cellsToChange = handleCell(args.row, args.column);
+            console.log('args row: ' + args.row);
+            console.log('args column  :' + args.column)
 
-            for (var i = 0; i < cellsToChange.length; i++) {
-                var options = {
-                    opened: true,
-                    row: cellsToChange[i].row,
-                    column: cellsToChange[i].column,
-                    element: app.battleField.getCell(cellsToChange[i].row, cellsToChange[i].column).value
-                };
+            var options = {
+                opened: true,
+                row: args.row,
+                column: args.column,
+                element: app.battleField.getCell(args.row, args.column).value
+            };
 
-                app.battleField.open(cellsToChange[i].row, cellsToChange[i].column);
+            function openPict(r, c) {
+                app.battleField.open(r, c);
                 app.player.addPoints(10 * options.element + 10);
                 app.controllers.battleFieldCtrl.changeCell(options);
             }
+
+            function changeCell(row, column, arr) {
+                if (row < 0 || column < 0 || row >= arr.length || column >= arr[0].length) {
+                    return;
+                }
+
+                if (arr[row][column].opened) {
+                    return;
+                }
+
+                if (arr[row][column].value == -1) {
+                    openPict(row, column);
+                    return;
+                }
+                if (arr[row][column].value >= 1) {
+                    openPict(row, column);
+                    return;
+                }
+                openPict(row,column)
+                if (arr[row][column].value == 0) {
+                    options.row = row;
+                    options.column = column;
+                    options.opened = true;
+                    options.element = app.battleField.getCell(row, column).value
+                    openPict(row, column)
+                    changeCell(row - 1, column - 1, arr); // step up left
+                    changeCell(row + 1, column - 1, arr); // step up right
+                    changeCell(row - 1, column + 1, arr); // step down left
+                    changeCell(row + 1, column + 1, arr); // step down right
+                    changeCell(row + 1, column, arr); // step right
+                    changeCell(row - 1, column, arr); // step left
+                    changeCell(row, column + 1, arr); // step down
+                    changeCell(row, column - 1, arr); // step up
+
+                }
+            }
+
+            changeCell(args.row, args.column, app.battleField.field);
+
             //right click put flag 
         } else if (args.mouseButtonType == 2) {
             var options = {
@@ -58,38 +99,6 @@ app.sapper = (function () {
         }
         app.controllers.battleFieldCtrl.changeCell(options);
 
-    };
-
-    var handleCell = function (row, column) {
-        var cellsToChange = [
-            {
-                row: row,
-                column: column
-            }
-        ];
-
-//        function findCellsToOpening(r, c) {
-//            
-//            var newCoords = {
-//                row: r,
-//                column: c
-//            }
-//            
-//
-//            findCellsToOpening(r + 1, c); // step right
-//            findCellsToOpening(r - 1, c); // step left
-//            findCellsToOpening(r, c + 1); // step down
-//            findCellsToOpening(r, c - 1); // step up
-//            findCellsToOpening(r - 1, c - 1); // step up left
-//            findCellsToOpening(r + 1, c - 1); // step up right
-//            findCellsToOpening(r - 1, c + 1); // step down left
-//            findCellsToOpening(r + 1, c + 1); // step down right
-//        }
-
-        //Process empty cells by recursion ! need to realize
-        findCellsToOpening(row, column, cellsToChange);
-        return cellsToChange;
-        alert('asdas')
     };
 
     return {

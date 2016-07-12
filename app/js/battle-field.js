@@ -151,8 +151,7 @@ app.battleField = (function () {
         },
         isBombOn: function (row, column){
             return this.field[row][column].value == elements.bomb;
-        },
-        isValidCoordinates: isValidCoordinates
+        }
     }
 
 })();
