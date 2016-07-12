@@ -5,7 +5,7 @@ app.sapper = (function () {
     var init = function (args) {
         //1.Fill field
         app.battleField.fill(app.player.getLevel())
-        //2.Set timer
+            //2.Set timer
         setTimer(app.player.getLevel());
     };
     //Choose level of game and set appropriate time
@@ -34,12 +34,12 @@ app.sapper = (function () {
                     column: cellsToChange[i].column,
                     element: app.battleField.getCell(cellsToChange[i].row, cellsToChange[i].column).value
                 };
-                
+
                 app.battleField.open(cellsToChange[i].row, cellsToChange[i].column);
                 app.player.addPoints(10 * options.element + 10);
                 app.controllers.battleFieldCtrl.changeCell(options);
             }
-        //right click put flag 
+            //right click put flag 
         } else if (args.mouseButtonType == 2) {
             var options = {
                 row: args.row,
@@ -61,16 +61,35 @@ app.sapper = (function () {
     };
 
     var handleCell = function (row, column) {
-        var cellsToChange = [{
-            row: row,
-            column: column
-        }];
+        var cellsToChange = [
+            {
+                row: row,
+                column: column
+            }
+        ];
+
+//        function findCellsToOpening(r, c) {
+//            
+//            var newCoords = {
+//                row: r,
+//                column: c
+//            }
+//            
+//
+//            findCellsToOpening(r + 1, c); // step right
+//            findCellsToOpening(r - 1, c); // step left
+//            findCellsToOpening(r, c + 1); // step down
+//            findCellsToOpening(r, c - 1); // step up
+//            findCellsToOpening(r - 1, c - 1); // step up left
+//            findCellsToOpening(r + 1, c - 1); // step up right
+//            findCellsToOpening(r - 1, c + 1); // step down left
+//            findCellsToOpening(r + 1, c + 1); // step down right
+//        }
+
         //Process empty cells by recursion ! need to realize
-        var reqFunc = function () {
-        
-        }
-        reqFunc();
+        findCellsToOpening(row, column, cellsToChange);
         return cellsToChange;
+        alert('asdas')
     };
 
     return {
