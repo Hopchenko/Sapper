@@ -150,6 +150,10 @@ body .graphite-flat-button:active {
     border: 2px solid #2f2e2e;
 }
 
+#player-name::placeholder {
+    color: white;
+}
+
 
 /*Score window*/
 
